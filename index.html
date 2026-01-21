@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jaisarves M | Portfolio</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* --- GLOBAL STYLES --- */
+      body {
+        font-family: "Poppins", sans-serif;
+        overflow-x: hidden;
+        background-color: #f8f9fa;
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      /* --- 1. SCROLL PROGRESS BAR --- */
+      #progress-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        z-index: 10000;
+        background: transparent;
+      }
+      #progress-bar {
+        height: 5px;
+        background: #0d6efd;
+        width: 0%;
+        transition: width 0.1s ease-out;
+      }
+
+      /* --- 2. INTRO OVERLAY & PULSE ANIMATION --- */
+      #intro-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #000;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        transition: opacity 1s ease-in-out, visibility 1s;
+      }
+      #intro-overlay.hidden {
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      .glow-btn {
+        padding: 15px 40px;
+        font-size: 1.5rem;
+        color: #fff;
+        background: transparent;
+        border: 2px solid #0d6efd;
+        border-radius: 50px;
+        cursor: pointer;
+        text-decoration: none;
+        position: relative;
+        transition: all 0.3s ease;
+      }
+      .glow-btn:hover {
+        background: #0d6efd;
+        box-shadow: 0 0 20px #0d6efd;
+      }
+
+      /* Pulse Ring Effect */
+      .pulse-ring::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+        border-radius: 50px;
+        border: 2px solid #0d6efd;
+        animation: pulse-animation 2s infinite;
+        z-index: -1;
+      }
+      @keyframes pulse-animation {
+        0% {
+          width: 100%;
+          height: 100%;
+          opacity: 1;
+        }
+        100% {
+          width: 160%;
+          height: 180%;
+          opacity: 0;
+        }
+      }
+
+      /* --- 3. ANIMATED BACKGROUND (Bubbles) --- */
+      .animated-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        overflow: hidden;
+        background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+        transition: background 0.3s;
+      }
+      .bubble {
+        position: absolute;
+        bottom: -100px;
+        background-color: rgba(13, 110, 253, 0.1);
+        border-radius: 50%;
+        animation: rise 15s infinite ease-in;
+      }
+      .bubble:nth-child(1) {
+        width: 40px;
+        height: 40px;
+        left: 10%;
+        animation-duration: 8s;
+      }
+      .bubble:nth-child(2) {
+        width: 80px;
+        height: 80px;
+        left: 20%;
+        animation-duration: 10s;
+        animation-delay: 2s;
+      }
+      .bubble:nth-child(3) {
+        width: 50px;
+        height: 50px;
+        left: 35%;
+        animation-duration: 7s;
+        animation-delay: 4s;
+      }
+      .bubble:nth-child(4) {
+        width: 100px;
+        height: 100px;
+        left: 50%;
+        animation-duration: 11s;
+        animation-delay: 0s;
+      }
+      .bubble:nth-child(5) {
+        width: 60px;
+        height: 60px;
+        left: 80%;
+        animation-duration: 9s;
+        animation-delay: 1s;
+      }
+
+      @keyframes rise {
+        0% {
+          bottom: -100px;
+          transform: translateX(0);
+        }
+        50% {
+          transform: translateX(100px);
+        }
+        100% {
+          bottom: 1080px;
+          transform: translateX(-200px);
+        }
+      }
+
+      /* --- 4. TYPING CURSOR --- */
+      .cursor {
+        display: inline-block;
+        width: 3px;
+        background-color: #0d6efd;
+        animation: blink 1s infinite;
+      }
+      @keyframes blink {
+        0% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      /* --- 5. TIMELINE STYLES (With Scroll Reveal) --- */
+      .timeline {
+        position: relative;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px 0;
+      }
+      .timeline::after {
+        content: "";
+        position: absolute;
+        width: 6px;
+        background-color: #0d6efd;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        margin-left: -3px;
+      }
+      .timeline-container {
+        padding: 10px 40px;
+        position: relative;
+        background-color: inherit;
+        width: 50%;
+        /* HIDDEN STATE FOR ANIMATION */
+        opacity: 0;
+        transform: scale(0.8) translateY(50px);
+        transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+      /* VISIBLE STATE */
+      .timeline-container.reveal {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+      .timeline-container.left {
+        left: 0;
+      }
+      .timeline-container.right {
+        left: 50%;
+      }
+
+      .timeline-container::after {
+        content: "";
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        right: -17px;
+        background-color: white;
+        border: 4px solid #0d6efd;
+        top: 15px;
+        border-radius: 50%;
+        z-index: 1;
+        transition: background-color 0.3s;
+      }
+      .timeline-container.right::after {
+        left: -16px;
+      }
+
+      .content {
+        padding: 20px 30px;
+        background-color: white;
+        border-radius: 6px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, background-color 0.3s;
+      }
+      .content:hover {
+        transform: scale(1.03);
+      }
+
+      @media screen and (max-width: 600px) {
+        .timeline::after {
+          left: 31px;
+        }
+        .timeline-container {
+          width: 100%;
+          padding-left: 70px;
+          padding-right: 25px;
+        }
+        .timeline-container.right {
+          left: 0%;
+        }
+        .timeline-container::after {
+          left: 15px;
+        }
+      }
+
+      /* --- 6. DARK MODE STYLES --- */
+      body.dark-mode {
+        background-color: #121212;
+        color: #e0e0e0;
+      }
+      body.dark-mode .animated-bg {
+        background: linear-gradient(120deg, #1a1a1a 0%, #000000 100%);
+      }
+      body.dark-mode .bg-light {
+        background-color: #1e1e1e !important;
+      }
+      body.dark-mode .navbar,
+      body.dark-mode .card,
+      body.dark-mode .content,
+      body.dark-mode .list-group-item,
+      body.dark-mode .bg-white,
+      body.dark-mode .modal-content {
+        background-color: #2d2d2d !important;
+        color: #e0e0e0 !important;
+        border-color: #444;
+      }
+      body.dark-mode .text-muted {
+        color: #a0a0a0 !important;
+      }
+      body.dark-mode .timeline::after {
+        background-color: #0d6efd;
+      }
+      body.dark-mode .timeline-container::after {
+        background-color: #2d2d2d;
+        border-color: #0d6efd;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="progress-container">
+      <div id="progress-bar"></div>
+    </div>
+    <div
+      id="intro-overlay"
+      class="d-flex flex-column align-items-center justify-content-center text-center vh-100"
+    >
+      <div class="mb-4">
+        <img
+          src="./images/Jaisarves_Photo.jpeg"
+          alt="Jaisarves M"
+          class="img-fluid rounded-circle shadow-lg border border-5 border-white"
+          style="width: 150px; height: 150px; object-fit: cover"
+        />
+      </div>
+
+      <h1 class="display-1 fw-bold mb-4">JAISARVES M</h1>
+
+      <button class="glow-btn pulse-ring" onclick="revealSite()">
+        Get to Know
+      </button>
+    </div>
+
+    <div class="animated-bg">
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+    </div>
+
+    <div id="main-content">
+      <nav
+        class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top"
+      >
+        <div class="container">
+          <a class="navbar-brand fw-bold" href="#">JAISARVES M</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto align-items-center">
+              <li class="nav-item">
+                <a class="nav-link" href="#home">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#about">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#experience">Experience</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#certifications">Certifications</a>
+              </li>
+              <li class="nav-item">
+                <button
+                  id="theme-toggle"
+                  class="btn btn-sm btn-outline-dark rounded-pill px-3 ms-lg-3"
+                >
+                  🌙 Dark Mode
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <section
+        id="home"
+        class="py-5"
+        style="min-height: 90vh; display: flex; align-items: center"
+      >
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-6 order-2 order-lg-1 text-center text-lg-start">
+              <h2 class="display-4 fw-bold mb-3">Jaisarves M</h2>
+              <h3 class="fs-2 text-primary mb-3">
+                I am a <span id="typing-text" class="fw-bold text-dark"></span
+                ><span class="cursor">|</span>
+              </h3>
+              <p class="fs-5 mt-4">
+                B.Tech Chemical Engineering (3rd Year)<br />NIT, Tiruchirapalli
+              </p>
+
+              <div class="mt-4">
+                <a
+                  href="https://www.linkedin.com/in/jaisarvesm/"
+                  target="_blank"
+                  class="btn btn-outline-dark rounded-pill px-4 ms-2"
+                  >LinkedIn</a
+                >
+                <a
+                  href="#about"
+                  class="btn btn-outline-dark rounded-pill px-4 ms-2"
+                  >Timeline</a
+                >
+              </div>
+
+              <div class="row mt-5">
+                <div class="col-md-12">
+                  <h5 class="text-muted mb-3">Skills</h5>
+                  <div
+                    class="d-flex flex-wrap gap-2 justify-content-center justify-content-lg-start"
+                  >
+                    <span class="badge bg-secondary p-2">HTML/CSS</span>
+                    <span class="badge bg-secondary p-2">Bootstrap</span>
+                    <span class="badge bg-secondary p-2">JavaScript</span>
+                    <span class="badge bg-secondary p-2">Python</span>
+                    <span class="badge bg-secondary p-2">SQL</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6 order-1 order-lg-2 text-center mb-4 mb-lg-0">
+              <img
+                src="./images/Jaisarves_Photo.jpeg"
+                alt="Jaisarves M"
+                class="img-fluid rounded-circle shadow-lg border border-5 border-white"
+                style="width: 350px; height: 350px; object-fit: cover"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="py-5 bg-light">
+        <div class="container">
+          <h2 class="text-center mb-5">About Me & Timeline</h2>
+          <p>
+            Aspiring process engineer and developer at NIT Trichy focused on
+            sustainability and digital transformation. I blend technical acumen
+            with disciplined leadership to drive results.
+
+            <li>
+              Engineering & Tech: Chemical Engineering (Process Design)
+              integrated with Full-Stack Development.
+            </li>
+            <li>
+              Leadership: NCC Air Wing Cadet with a focus on teamwork and
+              discipline.
+            </li>
+            <li>
+              Event Management: Spearheaded publicity for Lakshya’25 (Defence
+              Symposium) and coordinated Alchemy (Dept. Tech Fest).
+            </li>
+            <li>
+              Culture & Community: Active contributor to Tamil Mandram and
+              student service initiatives.
+            </li>
+          </p>
+          <div class="text-center mb-7">
+            <h4>Current Status (2023 - 2027)</h4>
+            <p class="text-muted">
+              Currently pursuing B.Tech in Chemical Engineering at NIT Trichy.
+            </p>
+          </div>
+
+          <div class="timeline">
+            <div class="timeline-container left">
+              <div class="content">
+                <h4 class="fw-bold">2011 - 2017</h4>
+                <h5 class="text-primary mb-1">Primary & Middle School</h5>
+                <p class="text-muted mb-0">Holy Cross Matriculation School</p>
+                <p class="small mt-2">
+                  Built a strong academic base through competitive Olympiads
+                  (Science/GK). Enhanced cognitive abilities with Abacus
+                  training and maintained extracurricular balance through Karate
+                  and Taekwondo.
+                </p>
+              </div>
+            </div>
+
+            <div class="timeline-container right">
+              <div class="content">
+                <h4 class="fw-bold">2017 - 2020</h4>
+                <h5 class="text-primary mb-1">Secondary Education (CBSE)</h5>
+                <p class="text-muted mb-0">Notre Dame of Holy Cross School</p>
+                <p class="small mt-2">
+                  Balanced academic excellence in Board examinations with strong
+                  literary and oratory achievements. Represented the school in
+                  Quiz and Debate competitions and showcased creative talent by
+                  publishing poetry in newspapers.
+                </p>
+              </div>
+            </div>
+
+            <div class="timeline-container left">
+              <div class="content">
+                <h4 class="fw-bold">2021 - 2023</h4>
+                <h5 class="text-primary mb-1">
+                  Higher Secondary (CBSE) & JEE Prep
+                </h5>
+                <p class="text-muted mb-0">Sri Chaitanya Techno School</p>
+                <p class="small mt-2">
+                  Specialized in Math, Physics, and Chemistry. Underwent
+                  rigorous training for engineering entrance exams, leading to
+                  NIT admission.
+                </p>
+              </div>
+            </div>
+
+            <div class="timeline-container right">
+              <div class="content">
+                <h4 class="fw-bold">2023 - 2027</h4>
+                <h5 class="text-primary mb-1">B.Tech Chemical Engineering</h5>
+                <p class="text-muted mb-0">NIT, Tiruchirappalli</p>
+                <p class="small mt-2">
+                  Pursuing a B.Tech with a Minor in Computer Applications,
+                  bridging the gap between Chemical Engineering and modern tech.
+                  Specializing in Process Safety and Aspen software while
+                  mastering Full Stack Development, SQL, and Generative AI.
+                  Active NCC cadet committed to disciplined leadership.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="experience" class="py-5">
+        <div class="container">
+          <h2 class="text-center mb-5">Projects & Experience</h2>
+          <div class="row">
+            <div class="col-md-6 mb-4">
+              <div class="card h-100 shadow-sm border-0 content">
+                <div class="card-body text-center">
+                  <i class="bi bi-laptop fs-1 text-primary mb-3"></i>
+                  <h5 class="card-title">Personal Portfolio</h5>
+                  <p class="card-text text-muted">
+                    A responsive portfolio built with Bootstrap 5 and JS.
+                  </p>
+                  <button
+                    type="button"
+                    class="btn btn-outline-primary btn-sm mt-2"
+                    data-bs-toggle="modal"
+                    data-bs-target="#projectModal1"
+                  >
+                    View Case Study
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mb-4">
+              <div class="card h-100 shadow-sm border-0 content">
+                <div class="card-body text-center">
+                  <i class="bi bi-graph-up fs-1 text-success mb-3"></i>
+                  <h5 class="card-title">Chemical Process Safety</h5>
+                  <p class="card-text text-muted">
+                    Analysis of hazard scenarios using Python simulations.
+                  </p>
+                  <button
+                    type="button"
+                    class="btn btn-outline-primary btn-sm mt-2"
+                  >
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="certifications" class="py-5 bg-light">
+        <div class="container">
+          <h2 class="text-center mb-5">Certifications</h2>
+          <div class="list-group w-75 mx-auto">
+            <a
+              href="https://certificates.ccbp.in/academy/static-website?id=ZRVKJHROZA"
+              target="_blank"
+              class="list-group-item list-group-item-action d-flex justify-content-between align-items-center p-4 shadow-sm border-0 mb-3 rounded"
+            >
+              <div>
+                <h5 class="mb-1">Build Your Own Static Website Development</h5>
+                <small class="text-muted">NxtWave</small>
+              </div>
+              <span class="badge bg-primary rounded-pill">View</span>
+            </a>
+
+            <a
+              href="https://certificates.ccbp.in/academy/build-your-own-responsive-website?id=YAMKCGFISV"
+              target="_blank"
+              class="list-group-item list-group-item-action d-flex justify-content-between align-items-center p-4 shadow-sm border-0 mb-3 rounded"
+            >
+              <div>
+                <h5 class="mb-1">Build Your Own Responsive Website</h5>
+                <small class="text-muted">NxtWave</small>
+              </div>
+              <span class="badge bg-primary rounded-pill">View</span>
+            </a>
+
+            <a
+              href=" https://www.credly.com/badges/6612cd6d-5073-4fac-9efb-868a9adb7758/linked_in_profile"
+              target="_blank"
+              class="list-group-item list-group-item-action d-flex justify-content-between align-items-center p-4 shadow-sm border-0 mb-3 rounded"
+            >
+              <div>
+                <h5 class="mb-2">
+                  Introduction to Generative AI - Training Badge
+                </h5>
+                <small class="text-muted">
+                  Amazon Web Services Training and Certification</small
+                >
+              </div>
+              <span class="badge bg-primary rounded-pill">View</span>
+            </a>
+
+            <a
+              href="https://nptel.ac.in/noc/E_Certificate/NPTEL25CH80S97050280510540506"
+              target="_blank"
+              class="list-group-item list-group-item-action d-flex justify-content-between align-items-center p-4 shadow-sm border-0 rounded"
+            >
+              <div>
+                <h5 class="mb-2">
+                  Aspen Plus Simulation Software - The Beginners Course
+                </h5>
+                <small class="text-muted">
+                  NPTEL Online Certification</small
+                >
+              </div>
+              <span class="badge bg-primary rounded-pill">View</span>
+            </a>
+
+          </div>
+        </div>
+      </section>
+
+      <section id="responsibilities" class="py-5">
+        <div class="container">
+          <h2 class="text-center mb-5">Positions of Responsibility</h2>
+          <div class="row">
+            <div class="col-md-6 mb-4">
+              <div class="p-4 border rounded bg-white shadow-sm h-100 content">
+                <div class="d-flex align-items-center mb-3">
+                  <i class="bi bi-bullseye fs-2 text-success me-3"></i>
+                  <div>
+                    <h5 class="mb-0 fw-bold">Executive Commitee Member</h5>
+                    <small class="text-muted">Lakshya</small>
+                  </div>
+                </div>
+                <p>
+                  Core organizer for the Annual Defence Symposium. Led publicity
+                  strategies for Lakshya 2025 to increase footfall by leading a
+                  team of 15. Successfully managed event logistics and guest
+                  lectures for Lakshya '24, ensuring seamless execution of
+                  workshops and informal sessions.
+                </p>
+              </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+              <div class="p-4 border rounded bg-white shadow-sm h-100 content">
+                <div class="d-flex align-items-center mb-3">
+                  <i
+                    class="bi bi-calendar2-event-fill fs-2 text-success me-3"
+                  ></i>
+                  <div>
+                    <h5 class="mb-0 fw-bold">
+                      Events and Content Team Manager
+                    </h5>
+                    <small class="text-muted"
+                      >ALCHEMY - Chemical Engineering Association</small
+                    >
+                  </div>
+                </div>
+                <p>
+                  Lead the Events Team for Alchemy 2025, a National Level
+                  Chemical Engineering Technical Symposium, where I
+                  conceptualized, developed, and executed dynamic events focused
+                  on chemical engineering. Spearheaded the creation of engaging
+                  content and ensured seamless event execution. Additionally, I
+                  drove social media strategy, curating and managing content to
+                  boost engagement and effectively promote the symposium.
+                </p>
+              </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+              <div class="p-4 border rounded bg-white shadow-sm h-100 content">
+                <div class="d-flex align-items-center mb-3">
+                  <i class="bi bi-chat-quote-fill fs-2 text-success me-3"></i>
+                  <div>
+                    <h5 class="mb-0 fw-bold">Deputy Manager</h5>
+                    <small class="text-muted">Tamil Mandram</small>
+                  </div>
+                </div>
+                <p>
+                  Worked as a coordinator with a focus on enhancing the club’s
+                  online presence and engaging audiences through impactful and
+                  humorous Tamil content. Also contributed to the Informals Team
+                  by organizing and executing interactive, culturally immersive
+                  events during Pongal celebrations and Festember, aimed at
+                  increasing student participation and promoting Tamil heritage
+                  through creative outreach initiatives.
+                </p>
+              </div>
+            </div>
+
+            <div class="col-12 mb-4">
+              <div class="p-4 border rounded bg-white shadow-sm h-100 content">
+                <div class="d-flex align-items-center mb-3">
+                  <i class="bi bi-airplane-fill fs-2 text-success me-3"></i>
+                  <div>
+                    <h5 class="mb-0 fw-bold">Leading Flight Cadet</h5>
+                    <small class="text-muted">A-Flight NCC</small>
+                  </div>
+                </div>
+                <p>
+                  My role has been one of a mentor and leader. I have trained
+                  more than 20 juniors on relevant drills and parade steps,
+                  building their overall discipline and synchronisation. I have
+                  also been an active participant in numerous camps, further
+                  developing my leadership qualities and contributing to the
+                  unit's overall success. This experience has improved my
+                  overall leadership style dramatically. I have learned to be
+                  deliberate, patient, and an active patriot, especially during
+                  high-profile national events, like Republic Day and
+                  Independence Day.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="bg-dark text-white text-center py-4">
+        <div class="container">
+          <div class="mb-3">
+            <a href="https://www.linkedin.com/in/jaisarvesm/" target="_blank" class="text-white text-decoration-none mx-3 fs-4"
+              ><i class="bi bi-linkedin"></i
+            ></a>
+            <a href="https://github.com/MJ21nitt" target="_blank" class="text-white text-decoration-none mx-3 fs-4"
+              ><i class="bi bi-github"></i
+            ></a>
+            ></a>
+          </div>
+          <p class="mb-0 small opacity-75">
+            &copy; 2026 Jaisarves M. All Rights Reserved.
+          </p>
+        </div>
+      </footer>
+    </div>
+
+    <div class="modal fade" id="projectModal1" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title fw-bold">Project: Personal Portfolio</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <h6 class="text-primary">Problem Statement</h6>
+            <p>
+              I needed a central hub to showcase my diverse skills in Chemical
+              Engineering and technical skills.
+            </p>
+            <h6 class="text-primary mt-3">Tech Stack</h6>
+            <span class="badge bg-secondary">HTML5</span>
+            <span class="badge bg-secondary">Bootstrap 5</span>
+            <span class="badge bg-secondary">JS</span>
+            <h6 class="text-primary mt-3">Key Features</h6>
+            <ul>
+              <li>Dark Mode Toggle</li>
+              <li>Scroll Reveal Animations</li>
+              <li>Responsive Design</li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      // 1. REVEAL SITE
+      function revealSite() {
+        document.getElementById("intro-overlay").classList.add("hidden");
+      }
+
+      // 2. SCROLL PROGRESS
+      window.onscroll = function () {
+        let winScroll =
+          document.body.scrollTop || document.documentElement.scrollTop;
+        let height =
+          document.documentElement.scrollHeight -
+          document.documentElement.clientHeight;
+        let scrolled = (winScroll / height) * 100;
+        document.getElementById("progress-bar").style.width = scrolled + "%";
+      };
+
+      // 3. TYPING EFFECT
+      const textElement = document.getElementById("typing-text");
+      const phrases = [
+        "Chemical Engineer",
+        "Web Developer",
+        "Learner",
+        "NCC Cadet",
+      ];
+      let phraseIndex = 0;
+      let charIndex = 0;
+      let isDeleting = false;
+
+      function type() {
+        const currentPhrase = phrases[phraseIndex];
+        if (isDeleting) {
+          textElement.textContent = currentPhrase.substring(0, charIndex - 1);
+          charIndex--;
+        } else {
+          textElement.textContent = currentPhrase.substring(0, charIndex + 1);
+          charIndex++;
+        }
+
+        if (!isDeleting && charIndex === currentPhrase.length) {
+          isDeleting = true;
+          setTimeout(type, 2000);
+        } else if (isDeleting && charIndex === 0) {
+          isDeleting = false;
+          phraseIndex = (phraseIndex + 1) % phrases.length;
+          setTimeout(type, 500);
+        } else {
+          setTimeout(type, isDeleting ? 50 : 100);
+        }
+      }
+      document.addEventListener("DOMContentLoaded", type);
+
+      // 4. DARK MODE TOGGLE
+      const toggleButton = document.getElementById("theme-toggle");
+      const body = document.body;
+      const typingText = document.getElementById("typing-text");
+
+      toggleButton.addEventListener("click", () => {
+        body.classList.toggle("dark-mode");
+        if (body.classList.contains("dark-mode")) {
+          toggleButton.textContent = "☀️ Light Mode";
+          toggleButton.classList.replace(
+            "btn-outline-dark",
+            "btn-outline-light"
+          );
+          typingText.classList.replace("text-dark", "text-white");
+        } else {
+          toggleButton.textContent = "🌙 Dark Mode";
+          toggleButton.classList.replace(
+            "btn-outline-light",
+            "btn-outline-dark"
+          );
+          typingText.classList.replace("text-white", "text-dark");
+        }
+      });
+
+      // 5. TIMELINE SCROLL REVEAL (INTERSECTION OBSERVER)
+      const observerOptions = { threshold: 0.2 };
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("reveal");
+          }
+        });
+      }, observerOptions);
+
+      document
+        .querySelectorAll(".timeline-container")
+        .forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>
