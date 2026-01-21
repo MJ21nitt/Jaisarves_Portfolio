@@ -18,305 +18,13 @@
       rel="stylesheet"
     />
 
-    <style>
-      /* --- GLOBAL STYLES --- */
-      body {
-        font-family: "Poppins", sans-serif;
-        overflow-x: hidden;
-        background-color: #f8f9fa;
-        transition: background-color 0.3s, color 0.3s;
-      }
-
-      /* --- 1. SCROLL PROGRESS BAR --- */
-      #progress-container {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 5px;
-        z-index: 10000;
-        background: transparent;
-      }
-      #progress-bar {
-        height: 5px;
-        background: #0d6efd;
-        width: 0%;
-        transition: width 0.1s ease-out;
-      }
-
-      /* --- 2. INTRO OVERLAY & PULSE ANIMATION --- */
-      #intro-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: #000;
-        color: #fff;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        z-index: 9999;
-        transition: opacity 1s ease-in-out, visibility 1s;
-      }
-      #intro-overlay.hidden {
-        opacity: 0;
-        visibility: hidden;
-      }
-
-      .glow-btn {
-        padding: 15px 40px;
-        font-size: 1.5rem;
-        color: #fff;
-        background: transparent;
-        border: 2px solid #0d6efd;
-        border-radius: 50px;
-        cursor: pointer;
-        text-decoration: none;
-        position: relative;
-        transition: all 0.3s ease;
-      }
-      .glow-btn:hover {
-        background: #0d6efd;
-        box-shadow: 0 0 20px #0d6efd;
-      }
-
-      /* Pulse Ring Effect */
-      .pulse-ring::before {
-        content: "";
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        width: 100%;
-        height: 100%;
-        border-radius: 50px;
-        border: 2px solid #0d6efd;
-        animation: pulse-animation 2s infinite;
-        z-index: -1;
-      }
-      @keyframes pulse-animation {
-        0% {
-          width: 100%;
-          height: 100%;
-          opacity: 1;
-        }
-        100% {
-          width: 160%;
-          height: 180%;
-          opacity: 0;
-        }
-      }
-
-      /* --- 3. ANIMATED BACKGROUND (Bubbles) --- */
-      .animated-bg {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        overflow: hidden;
-        background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
-        transition: background 0.3s;
-      }
-      .bubble {
-        position: absolute;
-        bottom: -100px;
-        background-color: rgba(13, 110, 253, 0.1);
-        border-radius: 50%;
-        animation: rise 15s infinite ease-in;
-      }
-      .bubble:nth-child(1) {
-        width: 40px;
-        height: 40px;
-        left: 10%;
-        animation-duration: 8s;
-      }
-      .bubble:nth-child(2) {
-        width: 80px;
-        height: 80px;
-        left: 20%;
-        animation-duration: 10s;
-        animation-delay: 2s;
-      }
-      .bubble:nth-child(3) {
-        width: 50px;
-        height: 50px;
-        left: 35%;
-        animation-duration: 7s;
-        animation-delay: 4s;
-      }
-      .bubble:nth-child(4) {
-        width: 100px;
-        height: 100px;
-        left: 50%;
-        animation-duration: 11s;
-        animation-delay: 0s;
-      }
-      .bubble:nth-child(5) {
-        width: 60px;
-        height: 60px;
-        left: 80%;
-        animation-duration: 9s;
-        animation-delay: 1s;
-      }
-
-      @keyframes rise {
-        0% {
-          bottom: -100px;
-          transform: translateX(0);
-        }
-        50% {
-          transform: translateX(100px);
-        }
-        100% {
-          bottom: 1080px;
-          transform: translateX(-200px);
-        }
-      }
-
-      /* --- 4. TYPING CURSOR --- */
-      .cursor {
-        display: inline-block;
-        width: 3px;
-        background-color: #0d6efd;
-        animation: blink 1s infinite;
-      }
-      @keyframes blink {
-        0% {
-          opacity: 1;
-        }
-        50% {
-          opacity: 0;
-        }
-        100% {
-          opacity: 1;
-        }
-      }
-
-      /* --- 5. TIMELINE STYLES (With Scroll Reveal) --- */
-      .timeline {
-        position: relative;
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 20px 0;
-      }
-      .timeline::after {
-        content: "";
-        position: absolute;
-        width: 6px;
-        background-color: #0d6efd;
-        top: 0;
-        bottom: 0;
-        left: 50%;
-        margin-left: -3px;
-      }
-      .timeline-container {
-        padding: 10px 40px;
-        position: relative;
-        background-color: inherit;
-        width: 50%;
-        /* HIDDEN STATE FOR ANIMATION */
-        opacity: 0;
-        transform: scale(0.8) translateY(50px);
-        transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      }
-      /* VISIBLE STATE */
-      .timeline-container.reveal {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-      }
-      .timeline-container.left {
-        left: 0;
-      }
-      .timeline-container.right {
-        left: 50%;
-      }
-
-      .timeline-container::after {
-        content: "";
-        position: absolute;
-        width: 25px;
-        height: 25px;
-        right: -17px;
-        background-color: white;
-        border: 4px solid #0d6efd;
-        top: 15px;
-        border-radius: 50%;
-        z-index: 1;
-        transition: background-color 0.3s;
-      }
-      .timeline-container.right::after {
-        left: -16px;
-      }
-
-      .content {
-        padding: 20px 30px;
-        background-color: white;
-        border-radius: 6px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s, background-color 0.3s;
-      }
-      .content:hover {
-        transform: scale(1.03);
-      }
-
-      @media screen and (max-width: 600px) {
-        .timeline::after {
-          left: 31px;
-        }
-        .timeline-container {
-          width: 100%;
-          padding-left: 70px;
-          padding-right: 25px;
-        }
-        .timeline-container.right {
-          left: 0%;
-        }
-        .timeline-container::after {
-          left: 15px;
-        }
-      }
-
-      /* --- 6. DARK MODE STYLES --- */
-      body.dark-mode {
-        background-color: #121212;
-        color: #e0e0e0;
-      }
-      body.dark-mode .animated-bg {
-        background: linear-gradient(120deg, #1a1a1a 0%, #000000 100%);
-      }
-      body.dark-mode .bg-light {
-        background-color: #1e1e1e !important;
-      }
-      body.dark-mode .navbar,
-      body.dark-mode .card,
-      body.dark-mode .content,
-      body.dark-mode .list-group-item,
-      body.dark-mode .bg-white,
-      body.dark-mode .modal-content {
-        background-color: #2d2d2d !important;
-        color: #e0e0e0 !important;
-        border-color: #444;
-      }
-      body.dark-mode .text-muted {
-        color: #a0a0a0 !important;
-      }
-      body.dark-mode .timeline::after {
-        background-color: #0d6efd;
-      }
-      body.dark-mode .timeline-container::after {
-        background-color: #2d2d2d;
-        border-color: #0d6efd;
-      }
-    </style>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div id="progress-container">
       <div id="progress-bar"></div>
     </div>
+
     <div
       id="intro-overlay"
       class="d-flex flex-column align-items-center justify-content-center text-center vh-100"
@@ -329,9 +37,7 @@
           style="width: 150px; height: 150px; object-fit: cover"
         />
       </div>
-
       <h1 class="display-1 fw-bold mb-4">JAISARVES M</h1>
-
       <button class="glow-btn pulse-ring" onclick="revealSite()">
         Get to Know
       </button>
@@ -452,7 +158,8 @@
             Aspiring process engineer and developer at NIT Trichy focused on
             sustainability and digital transformation. I blend technical acumen
             with disciplined leadership to drive results.
-
+          </p>
+          <ul>
             <li>
               Engineering & Tech: Chemical Engineering (Process Design)
               integrated with Full-Stack Development.
@@ -469,8 +176,8 @@
               Culture & Community: Active contributor to Tamil Mandram and
               student service initiatives.
             </li>
-          </p>
-          <div class="text-center mb-7">
+          </ul>
+          <div class="text-center mb-7 mt-4">
             <h4>Current Status (2023 - 2027)</h4>
             <p class="text-muted">
               Currently pursuing B.Tech in Chemical Engineering at NIT Trichy.
@@ -636,13 +343,10 @@
                 <h5 class="mb-2">
                   Aspen Plus Simulation Software - The Beginners Course
                 </h5>
-                <small class="text-muted">
-                  NPTEL Online Certification</small
-                >
+                <small class="text-muted"> NPTEL Online Certification</small>
               </div>
               <span class="badge bg-primary rounded-pill">View</span>
             </a>
-
           </div>
         </div>
       </section>
@@ -652,7 +356,9 @@
           <h2 class="text-center mb-5">Positions of Responsibility</h2>
           <div class="row">
             <div class="col-md-6 mb-4">
-              <div class="p-4 border rounded bg-white shadow-sm h-100 content">
+              <div
+                class="p-4 border rounded bg-white shadow-sm h-100 content"
+              >
                 <div class="d-flex align-items-center mb-3">
                   <i class="bi bi-bullseye fs-2 text-success me-3"></i>
                   <div>
@@ -671,7 +377,9 @@
             </div>
 
             <div class="col-md-6 mb-4">
-              <div class="p-4 border rounded bg-white shadow-sm h-100 content">
+              <div
+                class="p-4 border rounded bg-white shadow-sm h-100 content"
+              >
                 <div class="d-flex align-items-center mb-3">
                   <i
                     class="bi bi-calendar2-event-fill fs-2 text-success me-3"
@@ -687,20 +395,21 @@
                 </div>
                 <p>
                   Lead the Events Team for Alchemy 2025, a National Level
-                  Chemical Engineering Technical Symposium, where I
-                  conceptualized, developed, and executed dynamic events focused
-                  on chemical engineering. Spearheaded the creation of engaging
-                  content and ensured seamless event execution. Additionally, I
-                  drove social media strategy, curating and managing content to
-                  boost engagement and effectively promote the symposium.
+                  Chemical Engineering Technical Symposium. Spearheaded the
+                  creation of engaging content and ensured seamless event
+                  execution.
                 </p>
               </div>
             </div>
 
             <div class="col-md-6 mb-4">
-              <div class="p-4 border rounded bg-white shadow-sm h-100 content">
+              <div
+                class="p-4 border rounded bg-white shadow-sm h-100 content"
+              >
                 <div class="d-flex align-items-center mb-3">
-                  <i class="bi bi-chat-quote-fill fs-2 text-success me-3"></i>
+                  <i
+                    class="bi bi-chat-quote-fill fs-2 text-success me-3"
+                  ></i>
                   <div>
                     <h5 class="mb-0 fw-bold">Deputy Manager</h5>
                     <small class="text-muted">Tamil Mandram</small>
@@ -709,17 +418,15 @@
                 <p>
                   Worked as a coordinator with a focus on enhancing the club’s
                   online presence and engaging audiences through impactful and
-                  humorous Tamil content. Also contributed to the Informals Team
-                  by organizing and executing interactive, culturally immersive
-                  events during Pongal celebrations and Festember, aimed at
-                  increasing student participation and promoting Tamil heritage
-                  through creative outreach initiatives.
+                  humorous Tamil content.
                 </p>
               </div>
             </div>
 
             <div class="col-12 mb-4">
-              <div class="p-4 border rounded bg-white shadow-sm h-100 content">
+              <div
+                class="p-4 border rounded bg-white shadow-sm h-100 content"
+              >
                 <div class="d-flex align-items-center mb-3">
                   <i class="bi bi-airplane-fill fs-2 text-success me-3"></i>
                   <div>
@@ -730,14 +437,7 @@
                 <p>
                   My role has been one of a mentor and leader. I have trained
                   more than 20 juniors on relevant drills and parade steps,
-                  building their overall discipline and synchronisation. I have
-                  also been an active participant in numerous camps, further
-                  developing my leadership qualities and contributing to the
-                  unit's overall success. This experience has improved my
-                  overall leadership style dramatically. I have learned to be
-                  deliberate, patient, and an active patriot, especially during
-                  high-profile national events, like Republic Day and
-                  Independence Day.
+                  building their overall discipline and synchronisation.
                 </p>
               </div>
             </div>
@@ -748,12 +448,17 @@
       <footer class="bg-dark text-white text-center py-4">
         <div class="container">
           <div class="mb-3">
-            <a href="https://www.linkedin.com/in/jaisarvesm/" target="_blank" class="text-white text-decoration-none mx-3 fs-4"
+            <a
+              href="https://www.linkedin.com/in/jaisarvesm/"
+              target="_blank"
+              class="text-white text-decoration-none mx-3 fs-4"
               ><i class="bi bi-linkedin"></i
             ></a>
-            <a href="https://github.com/MJ21nitt" target="_blank" class="text-white text-decoration-none mx-3 fs-4"
+            <a
+              href="https://github.com/MJ21nitt"
+              target="_blank"
+              class="text-white text-decoration-none mx-3 fs-4"
               ><i class="bi bi-github"></i
-            ></a>
             ></a>
           </div>
           <p class="mb-0 small opacity-75">
@@ -763,7 +468,12 @@
       </footer>
     </div>
 
-    <div class="modal fade" id="projectModal1" tabindex="-1" aria-hidden="true">
+    <div
+      class="modal fade"
+      id="projectModal1"
+      tabindex="-1"
+      aria-hidden="true"
+    >
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
@@ -807,95 +517,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-    <script>
-      // 1. REVEAL SITE
-      function revealSite() {
-        document.getElementById("intro-overlay").classList.add("hidden");
-      }
-
-      // 2. SCROLL PROGRESS
-      window.onscroll = function () {
-        let winScroll =
-          document.body.scrollTop || document.documentElement.scrollTop;
-        let height =
-          document.documentElement.scrollHeight -
-          document.documentElement.clientHeight;
-        let scrolled = (winScroll / height) * 100;
-        document.getElementById("progress-bar").style.width = scrolled + "%";
-      };
-
-      // 3. TYPING EFFECT
-      const textElement = document.getElementById("typing-text");
-      const phrases = [
-        "Chemical Engineer",
-        "Web Developer",
-        "Learner",
-        "NCC Cadet",
-      ];
-      let phraseIndex = 0;
-      let charIndex = 0;
-      let isDeleting = false;
-
-      function type() {
-        const currentPhrase = phrases[phraseIndex];
-        if (isDeleting) {
-          textElement.textContent = currentPhrase.substring(0, charIndex - 1);
-          charIndex--;
-        } else {
-          textElement.textContent = currentPhrase.substring(0, charIndex + 1);
-          charIndex++;
-        }
-
-        if (!isDeleting && charIndex === currentPhrase.length) {
-          isDeleting = true;
-          setTimeout(type, 2000);
-        } else if (isDeleting && charIndex === 0) {
-          isDeleting = false;
-          phraseIndex = (phraseIndex + 1) % phrases.length;
-          setTimeout(type, 500);
-        } else {
-          setTimeout(type, isDeleting ? 50 : 100);
-        }
-      }
-      document.addEventListener("DOMContentLoaded", type);
-
-      // 4. DARK MODE TOGGLE
-      const toggleButton = document.getElementById("theme-toggle");
-      const body = document.body;
-      const typingText = document.getElementById("typing-text");
-
-      toggleButton.addEventListener("click", () => {
-        body.classList.toggle("dark-mode");
-        if (body.classList.contains("dark-mode")) {
-          toggleButton.textContent = "☀️ Light Mode";
-          toggleButton.classList.replace(
-            "btn-outline-dark",
-            "btn-outline-light"
-          );
-          typingText.classList.replace("text-dark", "text-white");
-        } else {
-          toggleButton.textContent = "🌙 Dark Mode";
-          toggleButton.classList.replace(
-            "btn-outline-light",
-            "btn-outline-dark"
-          );
-          typingText.classList.replace("text-white", "text-dark");
-        }
-      });
-
-      // 5. TIMELINE SCROLL REVEAL (INTERSECTION OBSERVER)
-      const observerOptions = { threshold: 0.2 };
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("reveal");
-          }
-        });
-      }, observerOptions);
-
-      document
-        .querySelectorAll(".timeline-container")
-        .forEach((el) => observer.observe(el));
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>
