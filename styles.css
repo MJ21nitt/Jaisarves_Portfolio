@@ -263,6 +263,11 @@ body {
   }
 }
 
+/* Smooth transition for project filtering */
+.project-item {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
 /* --- 6. DARK MODE STYLES --- */
 body.dark-mode {
   background-color: #121212;
