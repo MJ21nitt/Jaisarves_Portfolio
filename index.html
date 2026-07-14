@@ -106,7 +106,7 @@
                 ><span class="cursor">|</span>
               </h3>
               <p class="fs-5 mt-4">
-                B.Tech Chemical Engineering (3rd Year)<br />NIT, Tiruchirapalli
+                B.Tech Chemical Engineering (4th Year)<br />NIT, Tiruchirapalli
               </p>
               <p class="fs-5 mt-4">
                 Fellow at NxtWave’s CCBP 4.0 Academy
@@ -248,75 +248,107 @@
         </div>
       </section>
 
-      <section id="experience" class="py-5">
-        <div class="container">
-          <h2 class="text-center mb-5">Projects & Experience</h2>
-          <div class="row">
-            <div class="col-md-6 mb-4">
-              <div class="card h-100 shadow-sm border-0 content">
-                <div class="card-body text-center">
-                  <i class="bi bi-laptop fs-1 text-primary mb-3"></i>
-                  <h5 class="card-title">Personal Portfolio</h5>
-                  <p class="card-text text-muted">
-                    A responsive portfolio built with Bootstrap 5 and JS.
-                  </p>
-                  <button
-                    type="button"
-                    class="btn btn-outline-primary btn-sm mt-2"
-                    data-bs-toggle="modal"
-                    data-bs-target="#projectModal1"
-                  >
-                    View Case Study
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 mb-4">
-              <div class="card h-100 shadow-sm border-0 content">
-                <div class="card-body text-center">
-                  <i class="bi bi-graph-up fs-1 text-success mb-3"></i>
-                  <h5 class="card-title">Summer Internship - OMS at CPCL</h5>
-                  <p class="card-text text-muted">
-                    During my internship in the Oil Movement and Storage division at CPCL, I gained a basic understanding of how crude oil is received, stored, and prepared for refining. I observed oil transfer coordination, learned about storage tank operations, and became familiar with the general flow of crude within the facility. This brief experience gave me insight into the foundational processes involved in oil logistics and refinery support.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 mb-4">
-  <div class="card h-100 shadow-sm border-0 content">
-    <div class="card-body text-center">
-      <i class="bi bi-laptop fs-1 text-primary mb-3"></i>
-      <h5 class="card-title">Mastering AI Workflows</h5>
-      <p class="card-text text-muted">
-        I learned how to build a robust Social Media Automation pipeline using n8n, a powerful workflow automation tool.
-      </p>
-      <a 
-        class="btn btn-outline-primary btn-sm mt-2" 
-        href="https://www.linkedin.com/posts/jaisarvesm_nxtwave-learningnew-ai-activity-7417940017861308417-7swD?utm_source=share&utm_medium=member_desktop&rcm=ACoAAETCdssBbJGPIzlj_JZI43OcVGjjzcUUJxE" 
-        target="_blank"
-      >
-        View Work
-      </a>
+<section id="experience" class="py-5">
+  <div class="container">
+    <h2 class="text-center mb-4">Projects & Experience</h2>
+    <!-- Filter Buttons -->
+    <div class="d-flex flex-wrap justify-content-center mb-5 gap-2">
+      <button class="btn btn-primary filter-btn active" data-filter="all">All</button>
+      <button class="btn btn-outline-primary filter-btn" data-filter="chemical">Chemical</button>
+      <button class="btn btn-outline-primary filter-btn" data-filter="software">Software</button>
+      <button class="btn btn-outline-primary filter-btn" data-filter="analytics">Analytics</button>
     </div>
-  </div>
-</div>
-<div class="col-md-6 mb-4">
-              <div class="card h-100 shadow-sm border-0 content">
-                <div class="card-body text-center">
-                  <i class="bi bi-graph-up fs-1 text-success mb-3"></i>
-                  <h5 class="card-title">Winter Internship (2024) - Seshasayee Paper & Boards Limited</h5>
-                  <p class="card-text text-muted">
-                    Gained exposure to the Sodium Recovery Plant, understanding sustainable chemical recovery processes and their role in resource optimisation. Observed the functioning of the Rapid Heat Displacement Plant, focusing on energy-efficient heat exchange techniques in paper production.
-Familiarised with various instruments in the Quality Testing Laboratory and understanding their
-applications in analysing paper and pulp properties for quality assurance.
-                  </p>
-                </div>
-              </div>
-            </div>
-            
+
+    <div class="row" id="project-grid">
+      
+      <!-- Software: Personal Portfolio -->
+      <div class="col-md-6 mb-4 project-item" data-category="software">
+        <div class="card h-100 shadow-sm border-0 content">
+          <div class="card-body text-center">
+            <i class="bi bi-laptop fs-1 text-primary mb-3"></i>
+            <h5 class="card-title">Personal Portfolio</h5>
+            <p class="card-text text-muted">A responsive portfolio built with Bootstrap 5 and JS.</p>
+            <button type="button" class="btn btn-outline-primary btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#projectModal1">
+              View Case Study
+            </button>
           </div>
         </div>
-      </section>
+      </div>
+
+       <!-- Software: Axis Bank -->
+       <div class="col-md-6 mb-4 project-item" data-category="software">
+        <div class="card h-100 shadow-sm border-0 content">
+          <div class="card-body text-center">
+            <i class="bi bi-droplet-half fs-1 text-success mb-3"></i>
+            <h5 class="card-title">Axis Bank - IT: Associate Tech Engineer (Level A) - Development Intern (May-Jul 2026)</h5>
+            <p class="card-text text-muted">
+              During my two months at Axis House, I developed and implemented an LLM Playground for call analysis, leveraging FastAPI, HTML, CSS, and JavaScript. Working closely with my mentor, I translated the proposed architectural and design specifications into a working application, ready for functional testing.
+            </p>
+            <a class="btn btn-outline-primary btn-sm mt-2" href="https://www.linkedin.com/posts/jaisarvesm_axisbank-ascentinternship-chemicalengineering-ugcPost-7482346407056695296-S8NT/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAETCdssBbJGPIzlj_JZI43OcVGjjzcUUJxE" target="_blank">
+              View Work
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chemical: OMS at CPCL -->
+      <div class="col-md-6 mb-4 project-item" data-category="chemical">
+        <div class="card h-100 shadow-sm border-0 content">
+          <div class="card-body text-center">
+            <i class="bi bi-droplet-half fs-1 text-success mb-3"></i>
+            <h5 class="card-title">Summer Inplant Training (May 2025) - OMS at CPCL</h5>
+            <p class="card-text text-muted">
+              During my internship in the Oil Movement and Storage division at CPCL, I gained a basic understanding of how crude oil is received, stored, and prepared for refining. I observed oil transfer coordination, learned about storage tank operations, and became familiar with the general flow of crude within the facility. This brief experience gave me insight into the foundational processes involved in oil logistics and refinery support.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Software/AI: Mastering AI Workflows -->
+      <div class="col-md-6 mb-4 project-item" data-category="software">
+        <div class="card h-100 shadow-sm border-0 content">
+          <div class="card-body text-center">
+            <i class="bi bi-robot fs-1 text-primary mb-3"></i>
+            <h5 class="card-title">Mastering AI Workflows</h5>
+            <p class="card-text text-muted">
+              I learned how to build a robust Social Media Automation pipeline using n8n, a powerful workflow automation tool.
+            </p>
+            <a class="btn btn-outline-primary btn-sm mt-2" href="https://www.linkedin.com/posts/jaisarvesm_nxtwave-learningnew-ai-activity-7417940017861308417-7swD" target="_blank">
+              View Work
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chemical: SPB Limited -->
+      <div class="col-md-6 mb-4 project-item" data-category="chemical">
+        <div class="card h-100 shadow-sm border-0 content">
+          <div class="card-body text-center">
+            <i class="bi bi-gear-wide-connected fs-1 text-success mb-3"></i>
+            <h5 class="card-title">Winter Internship (2024) - Seshasayee Paper & Boards</h5>
+            <p class="card-text text-muted">
+              Gained exposure to the Sodium Recovery Plant, understanding sustainable chemical recovery processes and their role in resource optimisation. Observed the functioning of the Rapid Heat Displacement Plant, focusing on energy-efficient heat exchange techniques in paper production. Familiarised with various instruments in the Quality Testing Laboratory.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Analytics -->
+      <div class="col-md-6 mb-4 project-item" data-category="analytics">
+        <div class="card h-100 shadow-sm border-0 content">
+          <div class="card-body text-center">
+            <i class="bi bi-bar-chart-line fs-1 text-info mb-3"></i>
+            <h5 class="card-title">Power BI project</h5>
+            <p class="card-text text-muted">
+             Built first dashboard with simple data
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
       <section id="certifications" class="py-5 bg-light">
         <div class="container">
@@ -511,6 +543,9 @@ further support students in their learning journey.
           </div>
           <p class="mb-0 small opacity-75">
             &copy; 2026 Jaisarves M. All Rights Reserved.
+          </p>
+          <p class="mb-0 small opacity-75">
+             Last Updated: July,2026
           </p>
         </div>
       </footer>
