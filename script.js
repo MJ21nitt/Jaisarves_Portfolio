@@ -19,8 +19,10 @@ const textElement = document.getElementById("typing-text");
 const phrases = [
   "Chemical Engineer",
   "Web Developer",
-  "Learner",
-  "NCC Cadet",
+  "Process Safety Enthusiast",
+  "AI & Data Explorer",
+  "NCC Air Wing Cadet",
+  "Bilingual Poet"
 ];
 let phraseIndex = 0;
 let charIndex = 0;
@@ -88,3 +90,42 @@ const observer = new IntersectionObserver((entries) => {
 document
   .querySelectorAll(".timeline-container")
   .forEach((el) => observer.observe(el));
+
+// PROJECT FILTERING LOGIC
+const filterBtns = document.querySelectorAll('.filter-btn');
+const projectItems = document.querySelectorAll('.project-item');
+
+filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        // 1. Manage Button Styles (Remove active state from all, add to clicked)
+        filterBtns.forEach(button => {
+            button.classList.remove('active', 'btn-primary');
+            button.classList.add('btn-outline-primary');
+        });
+        btn.classList.remove('btn-outline-primary');
+        btn.classList.add('active', 'btn-primary');
+
+        // 2. Get the category to filter by
+        const filterValue = btn.getAttribute('data-filter');
+
+        // 3. Show or Hide the cards based on category
+        projectItems.forEach(item => {
+            const itemCategory = item.getAttribute('data-category');
+            
+            if (filterValue === 'all' || filterValue === itemCategory) {
+                item.style.display = 'block';
+                // Optional: Add a slight delay for a smoother fade-in effect
+                setTimeout(() => {
+                    item.style.opacity = '1';
+                    item.style.transform = 'scale(1)';
+                }, 50);
+            } else {
+                item.style.opacity = '0';
+                item.style.transform = 'scale(0.8)';
+                setTimeout(() => {
+                    item.style.display = 'none';
+                }, 300); // Wait for fade out to finish before hiding
+            }
+        });
+    });
+});
