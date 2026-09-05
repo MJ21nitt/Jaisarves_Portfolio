@@ -1,16 +1,12 @@
- document.addEventListener("DOMContentLoaded", () => {
-  /* =========================================
-     1. REVEAL SITE
-  ========================================= */
-
-  window.revealSite = function () {
-    const introOverlay = document.getElementById("intro-overlay");
-
-    if (introOverlay) {
-      introOverlay.classList.add("hidden");
-    }
-  };
-
+document.addEventListener("DOMContentLoaded", () => { 
+ /* ========================================= 1. REVEAL SITE ========================================= */ 
+ const introOverlay = document.getElementById("intro-overlay"); 
+ const getToKnowBtn = document.getElementById("get-to-know-btn"); 
+ if (introOverlay && getToKnowBtn) { 
+  getToKnowBtn.addEventListener("click", () => { introOverlay.classList.add("hidden"); 
+                                 
+            setTimeout(() => { introOverlay.style.display = "none"; }, 1000); }); }
+                                                                                                                                                                                                                                                                                                                                                                                 
 
   /* =========================================
      2. SCROLL PROGRESS
