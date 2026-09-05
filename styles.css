@@ -1,6 +1,4 @@
-h1 {
-  text-decoration: underline;
-}
+
 /* --- GLOBAL STYLES --- */
 body {
   font-family: "Poppins", sans-serif;
@@ -268,7 +266,9 @@ body {
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-/* --- 6. DARK MODE STYLES --- */
+/* =========================================
+   6. DARK MODE
+========================================= */
 
 body.dark-mode {
   background-color: #121212;
@@ -276,45 +276,81 @@ body.dark-mode {
 }
 
 /* Background */
+
 body.dark-mode .animated-bg {
-  background: linear-gradient(120deg, #1a1a1a 0%, #000000 100%);
+  background: linear-gradient(
+    120deg,
+    #1a1a1a 0%,
+    #000000 100%
+  );
 }
 
 body.dark-mode .bg-light {
   background-color: #1e1e1e !important;
 }
 
-/* Navbar */
+
+/* =========================================
+   NAVBAR
+========================================= */
+
 body.dark-mode .navbar {
   background-color: #2d2d2d !important;
 }
 
 body.dark-mode .navbar-brand,
 body.dark-mode .nav-link {
-  color: #fff !important;
+  color: #ffffff !important;
 }
 
 body.dark-mode .nav-link:hover {
   color: #adb5bd !important;
 }
 
-/* Navbar toggle button */
+
+/* Mobile navbar */
+
 body.dark-mode .navbar-toggler {
-  border-color: #fff;
+  border-color: #ffffff;
 }
 
 body.dark-mode .navbar-toggler-icon {
   filter: invert(1);
 }
 
-/* Dark mode toggle */
+
+/* =========================================
+   THEME TOGGLE
+========================================= */
+
+#theme-toggle {
+  color: #212529;
+  border: 1px solid #212529;
+  background-color: transparent;
+  transition: all 0.3s ease;
+}
+
+#theme-toggle:hover {
+  background-color: #212529;
+  color: #ffffff;
+}
+
 body.dark-mode #theme-toggle {
-  color: #fff;
-  border-color: #fff;
+  color: #ffffff;
+  border-color: #ffffff;
   background-color: transparent;
 }
 
-/* Cards, content, modals */
+body.dark-mode #theme-toggle:hover {
+  background-color: #ffffff;
+  color: #212529;
+}
+
+
+/* =========================================
+   CARDS / CONTENT
+========================================= */
+
 body.dark-mode .card,
 body.dark-mode .content,
 body.dark-mode .list-group-item,
@@ -322,15 +358,23 @@ body.dark-mode .bg-white,
 body.dark-mode .modal-content {
   background-color: #2d2d2d !important;
   color: #e0e0e0 !important;
-  border-color: #444;
+  border-color: #444 !important;
 }
 
-/* Muted text */
+
+/* =========================================
+   TEXT
+========================================= */
+
 body.dark-mode .text-muted {
   color: #a0a0a0 !important;
 }
 
-/* Timeline */
+
+/* =========================================
+   TIMELINE
+========================================= */
+
 body.dark-mode .timeline::after {
   background-color: #0d6efd;
 }
@@ -340,7 +384,11 @@ body.dark-mode .timeline-container::after {
   border-color: #0d6efd;
 }
 
-/* Portfolio buttons - Light Mode */
+
+/* =========================================
+   PORTFOLIO BUTTONS
+========================================= */
+
 .portfolio-btn {
   color: #212529;
   border: 1px solid #212529;
@@ -349,34 +397,17 @@ body.dark-mode .timeline-container::after {
 }
 
 .portfolio-btn:hover {
-  color: #fff;
+  color: #ffffff;
   background-color: #212529;
 }
 
-/* Portfolio buttons - Dark Mode */
 body.dark-mode .portfolio-btn {
-  color: #fff;
-  border-color: #fff;
+  color: #ffffff;
+  border-color: #ffffff;
   background-color: transparent;
 }
 
 body.dark-mode .portfolio-btn:hover {
   color: #212529;
-  background-color: #fff;
-}
-.portfolio-btn:hover {
-  color: #fff;
-  background-color: #212529;
-}
-
-/* Portfolio buttons - Dark Mode */
-body.dark-mode .portfolio-btn {
-  color: #fff;
-  border-color: #fff;
-  background-color: transparent;
-}
-
-body.dark-mode .portfolio-btn:hover {
-  color: #212529;
-  background-color: #fff;
+  background-color: #ffffff;
 }
