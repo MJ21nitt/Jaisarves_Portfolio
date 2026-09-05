@@ -269,17 +269,52 @@ body {
 }
 
 /* --- 6. DARK MODE STYLES --- */
+
 body.dark-mode {
   background-color: #121212;
   color: #e0e0e0;
 }
+
+/* Background */
 body.dark-mode .animated-bg {
   background: linear-gradient(120deg, #1a1a1a 0%, #000000 100%);
 }
+
 body.dark-mode .bg-light {
   background-color: #1e1e1e !important;
 }
-body.dark-mode .navbar,
+
+/* Navbar */
+body.dark-mode .navbar {
+  background-color: #2d2d2d !important;
+}
+
+body.dark-mode .navbar-brand,
+body.dark-mode .nav-link {
+  color: #fff !important;
+}
+
+body.dark-mode .nav-link:hover {
+  color: #adb5bd !important;
+}
+
+/* Navbar toggle button */
+body.dark-mode .navbar-toggler {
+  border-color: #fff;
+}
+
+body.dark-mode .navbar-toggler-icon {
+  filter: invert(1);
+}
+
+/* Dark mode toggle */
+body.dark-mode #theme-toggle {
+  color: #fff;
+  border-color: #fff;
+  background-color: transparent;
+}
+
+/* Cards, content, modals */
 body.dark-mode .card,
 body.dark-mode .content,
 body.dark-mode .list-group-item,
@@ -289,13 +324,59 @@ body.dark-mode .modal-content {
   color: #e0e0e0 !important;
   border-color: #444;
 }
+
+/* Muted text */
 body.dark-mode .text-muted {
   color: #a0a0a0 !important;
 }
+
+/* Timeline */
 body.dark-mode .timeline::after {
   background-color: #0d6efd;
 }
+
 body.dark-mode .timeline-container::after {
   background-color: #2d2d2d;
   border-color: #0d6efd;
+}
+
+/* Portfolio buttons - Light Mode */
+.portfolio-btn {
+  color: #212529;
+  border: 1px solid #212529;
+  background-color: transparent;
+  transition: all 0.3s ease;
+}
+
+.portfolio-btn:hover {
+  color: #fff;
+  background-color: #212529;
+}
+
+/* Portfolio buttons - Dark Mode */
+body.dark-mode .portfolio-btn {
+  color: #fff;
+  border-color: #fff;
+  background-color: transparent;
+}
+
+body.dark-mode .portfolio-btn:hover {
+  color: #212529;
+  background-color: #fff;
+}
+.portfolio-btn:hover {
+  color: #fff;
+  background-color: #212529;
+}
+
+/* Portfolio buttons - Dark Mode */
+body.dark-mode .portfolio-btn {
+  color: #fff;
+  border-color: #fff;
+  background-color: transparent;
+}
+
+body.dark-mode .portfolio-btn:hover {
+  color: #212529;
+  background-color: #fff;
 }
