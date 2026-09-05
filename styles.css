@@ -560,3 +560,100 @@ body.dark-mode .hero-tagline {
   }
 
 }
+
+ /* --- CREATIVE WORKS --- */
+
+.creative-filter {
+  margin: 5px;
+  transition: all 0.3s ease;
+}
+
+.creative-filter.active {
+  background-color: #0d6efd;
+  color: #fff;
+}
+
+.creative-item {
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.creative-item.hidden {
+  display: none;
+}
+
+.creative-card {
+  height: 100%;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+
+  display: flex;
+  flex-direction: column;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.creative-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.creative-icon {
+  width: 60px;
+  height: 60px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 15px;
+  background-color: rgba(13, 110, 253, 0.1);
+
+  color: #0d6efd;
+  font-size: 1.8rem;
+
+  margin-bottom: 18px;
+}
+
+.creative-type {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #0d6efd;
+}
+
+.creative-card h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.creative-card p {
+  line-height: 1.7;
+}
+
+/* Dark mode */
+
+body.dark-mode .creative-card {
+  background-color: #1e1e1e;
+  color: #f5f5f5;
+}
+
+body.dark-mode .creative-card p {
+  color: #bdbdbd !important;
+}
+
+body.dark-mode .creative-icon {
+  background-color: rgba(13, 110, 253, 0.15);
+}
+
+body.dark-mode .creative-filter:not(.active) {
+  color: #fff;
+  border-color: #555;
+}
