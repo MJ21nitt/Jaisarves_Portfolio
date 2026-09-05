@@ -52,9 +52,7 @@
     </div>
 
     <div id="main-content">
-      <nav
-        class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top"
-      >
+      <nav class="navbar navbar-expand-lg shadow-sm sticky-top">
         <div class="container">
           <a class="navbar-brand fw-bold" href="#">JAISARVES M</a>
           <button
@@ -82,7 +80,7 @@
               <li class="nav-item">
                 <button
                   id="theme-toggle"
-                  class="btn btn-sm btn-outline-dark rounded-pill px-3 ms-lg-3"
+                  class="btn btn-sm rounded-pill px-3 ms-lg-3"
                 >
                   🌙 Dark Mode
                 </button>
@@ -112,19 +110,23 @@
                 Fellow at NxtWave’s CCBP 4.0 Academy
               </p>
 
-              <div class="mt-4">
-                <a
-                  href="https://www.linkedin.com/in/jaisarvesm/"
-                  target="_blank"
-                  class="btn btn-outline-dark rounded-pill px-4 ms-2"
-                  >LinkedIn</a
-                >
-                <a
-                  href="#about"
-                  class="btn btn-outline-dark rounded-pill px-4 ms-2"
-                  >Timeline</a
-                >
-              </div>
+             <div class="mt-4">
+              <a
+                href="https://www.linkedin.com/in/jaisarvesm/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn portfolio-btn rounded-pill px-4 ms-2"
+              >
+                LinkedIn
+              </a>
+
+              <a
+                href="#about"
+                class="btn portfolio-btn rounded-pill px-4 ms-2"
+              >
+                Timeline
+              </a>
+        </div>
 
               <div class="row mt-5">
                 <div class="col-md-12">
@@ -255,8 +257,9 @@
     <div class="d-flex flex-wrap justify-content-center mb-5 gap-2">
       <button class="btn btn-primary filter-btn active" data-filter="all">All</button>
       <button class="btn btn-outline-primary filter-btn" data-filter="chemical">Chemical</button>
-      <button class="btn btn-outline-primary filter-btn" data-filter="software">Software</button>
       <button class="btn btn-outline-primary filter-btn" data-filter="analytics">Analytics</button>
+      <button class="btn btn-outline-primary filter-btn" data-filter="software">Software</button>
+  
     </div>
 
     <div class="row" id="project-grid">
@@ -304,22 +307,7 @@
         </div>
       </div>
 
-      <!-- Software/AI: Mastering AI Workflows -->
-      <div class="col-md-6 mb-4 project-item" data-category="software">
-        <div class="card h-100 shadow-sm border-0 content">
-          <div class="card-body text-center">
-            <i class="bi bi-robot fs-1 text-primary mb-3"></i>
-            <h5 class="card-title">Mastering AI Workflows</h5>
-            <p class="card-text text-muted">
-              I learned how to build a robust Social Media Automation pipeline using n8n, a powerful workflow automation tool.
-            </p>
-            <a class="btn btn-outline-primary btn-sm mt-2" href="https://www.linkedin.com/posts/jaisarvesm_nxtwave-learningnew-ai-activity-7417940017861308417-7swD" target="_blank">
-              View Work
-            </a>
-          </div>
-        </div>
-      </div>
-
+      
       <!-- Chemical: SPB Limited -->
       <div class="col-md-6 mb-4 project-item" data-category="chemical">
         <div class="card h-100 shadow-sm border-0 content">
@@ -338,13 +326,49 @@
         <div class="card h-100 shadow-sm border-0 content">
           <div class="card-body text-center">
             <i class="bi bi-bar-chart-line fs-1 text-info mb-3"></i>
-            <h5 class="card-title">Power BI project</h5>
+            <h5 class="card-title">Sales Data Analysis Using SQL and PowerBI</h5>
             <p class="card-text text-muted">
-             Built first dashboard with simple data
+             This project analyzes sales transaction data using SQL to explore data quality, customer behavior, product performance, market performance, time-based trends, advanced analytical calculations, and profitability. Designed interactive Power BI dashboards and visualisations for executive reporting, translating 
+analytical findings into actionable insights for business decision-making. 
             </p>
+            <a class="btn btn-outline-primary btn-sm mt-2" href="https://github.com/MJ21nitt/RetailSalesAnalytics" target="_blank">
+              View Work
+            </a>
           </div>
         </div>
       </div>
+
+      <div class="col-md-6 mb-4 project-item" data-category="analytics">
+        <div class="card h-100 shadow-sm border-0 content">
+          <div class="card-body text-center">
+            <i class="bi bi-bar-chart-line fs-1 text-info mb-3"></i>
+            <h5 class="card-title">Smart Loan Approval Analysis & Prediction</h5>
+            <p class="card-text text-muted">
+             Performed data preprocessing, EDA, feature engineering, and classification modeling to analyze loan approval patterns and predict application outcomes.
+            </p>
+            <a class="btn btn-outline-primary btn-sm mt-2" href="https://github.com/MJ21nitt/" target="_blank">
+              View Work
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Software/AI: Mastering AI Workflows -->
+      <div class="col-md-6 mb-4 project-item" data-category="software">
+        <div class="card h-100 shadow-sm border-0 content">
+          <div class="card-body text-center">
+            <i class="bi bi-robot fs-1 text-primary mb-3"></i>
+            <h5 class="card-title">Mastering AI Workflows</h5>
+            <p class="card-text text-muted">
+              I learned how to build a robust Social Media Automation pipeline using n8n, a powerful workflow automation tool.
+            </p>
+            <a class="btn btn-outline-primary btn-sm mt-2" href="https://www.linkedin.com/posts/jaisarvesm_nxtwave-learningnew-ai-activity-7417940017861308417-7swD" target="_blank">
+              View Work
+            </a>
+          </div>
+        </div>
+      </div>
+
 
     </div>
   </div>
@@ -415,6 +439,24 @@
         <div class="container">
           <h2 class="text-center mb-5">Positions of Responsibility</h2>
           <div class="row">
+
+            <div class="col-12 mb-4">
+              <div
+                class="p-4 border rounded bg-white shadow-sm h-100 content"
+              >
+                <div class="d-flex align-items-center mb-3">
+                  <i class="bi bi-airplane-fill fs-2 text-success me-3"></i>
+                  <div>
+                    <h5 class="mb-0 fw-bold">Ex-Leading Flight Cadet</h5>
+                    <small class="text-muted">A-Flight NCC</small>
+                  </div>
+                </div>
+                <p>
+                  My role has been one of a mentor and leader. I have trained more than 20 juniors on relevant drills and parade steps, building their overall discipline and synchronisation. I have also been an active participant in numerous camps, further developing my leadership qualities and contributing to the unit's overall success. This experience has improved my overall leadership style dramatically. I have learned to be deliberate, patient, and an active patriot, especially during high-profile national events, like Republic Day and Independence Day.
+                </p>
+              </div>
+            </div>
+            
             <div class="col-md-6 mb-4">
               <div
                 class="p-4 border rounded bg-white shadow-sm h-100 content"
@@ -422,7 +464,7 @@
                 <div class="d-flex align-items-center mb-3">
                   <i class="bi bi-bullseye fs-2 text-success me-3"></i>
                   <div>
-                    <h5 class="mb-0 fw-bold">Executive Commitee Member</h5>
+                    <h5 class="mb-0 fw-bold">Ex-Executive Commitee Member</h5>
                     <small class="text-muted">Lakshya</small>
                   </div>
                 </div>
@@ -446,7 +488,7 @@
                   ></i>
                   <div>
                     <h5 class="mb-0 fw-bold">
-                      Events and Content Team Manager
+                      Head, Events and Content, Alchemy
                     </h5>
                     <small class="text-muted"
                       >ALCHEMY - Chemical Engineering Association</small
@@ -471,14 +513,12 @@
                     class="bi bi-chat-quote-fill fs-2 text-success me-3"
                   ></i>
                   <div>
-                    <h5 class="mb-0 fw-bold">Deputy Manager</h5>
+                    <h5 class="mb-0 fw-bold">Head, Thirai Galatta</h5>
                     <small class="text-muted">Tamil Mandram</small>
                   </div>
                 </div>
                 <p>
-                  Worked as a coordinator with a focus on enhancing the club’s
-                  online presence and engaging audiences through impactful and
-                  humorous Tamil content.
+                  Led a 10+ member creative team to organise 5+ events and produced 6+ Tamil-themed content pieces per semester, driving campus engagement and event participation.
                 </p>
               </div>
             </div>
@@ -505,22 +545,7 @@ further support students in their learning journey.
               </div>
             </div>
 
-            <div class="col-12 mb-4">
-              <div
-                class="p-4 border rounded bg-white shadow-sm h-100 content"
-              >
-                <div class="d-flex align-items-center mb-3">
-                  <i class="bi bi-airplane-fill fs-2 text-success me-3"></i>
-                  <div>
-                    <h5 class="mb-0 fw-bold">Leading Flight Cadet</h5>
-                    <small class="text-muted">A-Flight NCC</small>
-                  </div>
-                </div>
-                <p>
-                  My role has been one of a mentor and leader. I have trained more than 20 juniors on relevant drills and parade steps, building their overall discipline and synchronisation. I have also been an active participant in numerous camps, further developing my leadership qualities and contributing to the unit's overall success. This experience has improved my overall leadership style dramatically. I have learned to be deliberate, patient, and an active patriot, especially during high-profile national events, like Republic Day and Independence Day.
-                </p>
-              </div>
-            </div>
+            
           </div>
         </div>
       </section>
@@ -545,7 +570,7 @@ further support students in their learning journey.
             &copy; 2026 Jaisarves M. All Rights Reserved.
           </p>
           <p class="mb-0 small opacity-75">
-             Last Updated: July,2026
+             Last Updated: August, 2026
           </p>
         </div>
       </footer>
