@@ -138,56 +138,64 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  /* =========================================
-     6. PROJECT FILTERING
-  ========================================= */
+/* =========================================
+   6. PROJECT FILTERING
+========================================= */
 
-  const filterBtns = document.querySelectorAll(".filter-btn");
-  const projectItems = document.querySelectorAll(".project-item");
+const filterBtns = document.querySelectorAll(".filter-btn");
+const projectItems = document.querySelectorAll(".project-item");
 
-  if (filterBtns.length > 0 && projectItems.length > 0) {
-    filterBtns.forEach((btn) => {
-      btn.addEventListener("click", () => {
+if (filterBtns.length > 0 && projectItems.length > 0) {
 
-        /* Update active button */
-        filterBtns.forEach((button) => {
-          button.classList.remove("active", "btn-primary");
-          button.classList.add("btn-outline-primary");
-        });
+  filterBtns.forEach((btn) => {
 
-        btn.classList.remove("btn-outline-primary");
-        btn.classList.add("active", "btn-primary");
+    btn.addEventListener("click", () => {
 
-
-        /* Get selected category */
-        const filterValue = btn.getAttribute("data-filter");
-
-
-        /* Filter projects */
-        projectItems.forEach((item) => {
-          const itemCategory = item.getAttribute("data-category");
-
-          if (
-            filterValue === "all" ||
-            filterValue === itemCategory
-          ) {
-            item.style.display = "block";
-
-            requestAnimationFrame(() => {
-              item.style.opacity = "1";
-              item.style.transform = "scale(1)";
-            });
-
-          } else {
-            item.style.opacity = "0";
-            item.style.transform = "scale(0.8)";
-
-            setTimeout(() => {
-              item.style.display = "none";
-            }, 300);
-          }
-        });
+      /* Update active button */
+      filterBtns.forEach((button) => {
+        button.classList.remove("active", "btn-primary");
+        button.classList.add("btn-outline-primary");
       });
+
+      btn.classList.remove("btn-outline-primary");
+      btn.classList.add("active", "btn-primary");
+
+      /* Selected category */
+      const filterValue = btn.getAttribute("data-filter");
+
+      /* Filter projects */
+      projectItems.forEach((item) => {
+
+        const itemCategory = item.getAttribute("data-category");
+
+        const shouldShow =
+          filterValue === "all" ||
+          filterValue === itemCategory;
+
+        if (shouldShow) {
+
+          item.style.display = "";
+
+          requestAnimationFrame(() => {
+            item.style.opacity = "1";
+            item.style.transform = "scale(1)";
+          });
+
+        } else {
+
+          item.style.opacity = "0";
+          item.style.transform = "scale(0.8)";
+
+          setTimeout(() => {
+            item.style.display = "none";
+          }, 300);
+
+        }
+
+      });
+
     });
-  }
-});
+
+  });
+
+}
