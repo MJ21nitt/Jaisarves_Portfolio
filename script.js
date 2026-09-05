@@ -199,3 +199,31 @@ if (filterBtns.length > 0 && projectItems.length > 0) {
   });
 
 }
+
+                            // Creative Works Filtering
+  const creativeFilters = document.querySelectorAll(".creative-filter");
+  const creativeItems = document.querySelectorAll(".creative-item");
+
+  creativeFilters.forEach((button) => {
+    button.addEventListener("click", () => {
+      const filter = button.dataset.filter;
+
+      // Update active button
+      creativeFilters.forEach((btn) => {
+        btn.classList.remove("active");
+      });
+
+      button.classList.add("active");
+
+      // Filter creative works
+      creativeItems.forEach((item) => {
+        const type = item.dataset.type;
+
+        if (filter === "all" || type === filter) {
+          item.classList.remove("hidden");
+        } else {
+          item.classList.add("hidden");
+        }
+      });
+    });
+  });
