@@ -411,3 +411,152 @@ body.dark-mode .portfolio-btn:hover {
   color: #212529;
   background-color: #ffffff;
 }
+
+/* =========================================
+   7. HERO
+========================================= */
+
+.hero-tagline {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #0d6efd;
+  letter-spacing: 0.5px;
+}
+
+.hero-photo {
+  width: 350px;
+  height: 350px;
+  object-fit: cover;
+}
+
+
+/* =========================================
+   8. SKILLS
+========================================= */
+
+.skill-card {
+  border-radius: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12) !important;
+}
+
+
+/* =========================================
+   9. PROJECTS
+========================================= */
+
+.project-card {
+  border-radius: 15px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12) !important;
+}
+
+.project-icon {
+  font-size: 2.5rem;
+  color: #0d6efd;
+}
+
+.project-card .badge,
+.experience-card .badge {
+  font-weight: 500;
+}
+
+
+/* =========================================
+   10. EXPERIENCE
+========================================= */
+
+.experience-card {
+  border-radius: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.experience-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12) !important;
+}
+
+.experience-icon {
+  font-size: 2.5rem;
+  color: #0d6efd;
+}
+
+
+/* =========================================
+   11. CREATIVE WORKS
+========================================= */
+
+.creative-card {
+  border-radius: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.creative-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12) !important;
+}
+
+.creative-icon {
+  font-size: 3rem;
+  color: #0d6efd;
+}
+
+
+/* =========================================
+   12. DARK MODE - NEW SECTIONS
+========================================= */
+
+body.dark-mode .skill-card,
+body.dark-mode .project-card,
+body.dark-mode .experience-card,
+body.dark-mode .creative-card {
+  background-color: #2d2d2d !important;
+  color: #e0e0e0 !important;
+}
+
+body.dark-mode .bg-light {
+  background-color: #1e1e1e !important;
+}
+
+body.dark-mode .project-card .bg-light,
+body.dark-mode .experience-card .bg-light {
+  background-color: #3a3a3a !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode .hero-tagline {
+  color: #4dabf7;
+}
+
+
+/* =========================================
+   13. MOBILE HERO
+========================================= */
+
+@media screen and (max-width: 600px) {
+
+  .hero-photo {
+    width: 260px;
+    height: 260px;
+  }
+
+  .hero-tagline {
+    font-size: 1rem;
+  }
+
+  .project-card,
+  .experience-card,
+  .creative-card {
+    margin-bottom: 10px;
+  }
+
+}
