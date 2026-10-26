@@ -1,4 +1,4 @@
- <style>
+
       :root {
         --bg-primary: #fcfcfc;
         --text-primary: #111111;
@@ -276,4 +276,4 @@
         0%, 50% { opacity: 1; }
         51%, 100% { opacity: 0; }
       }
-    </style>
+
